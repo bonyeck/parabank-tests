@@ -23,11 +23,13 @@ public class LoginTest {
 
     @Test
     public void shouldLogin() {
-        indexPage.openIndexPage();
-        indexPage.setLogin("John");
-        indexPage.setPassword("123123!$L");
-        indexPage.clickLoginButton();
+        indexPage.openIndexPage()
+                .setLogin("John")
+                .setPassword("123123!$L")
+                .clickLoginButton();
+
         Assert.assertTrue(accountPage.isUserLoggedIn());
+
     }
 }
 

@@ -23,19 +23,21 @@ public class IndexPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void openIndexPage() {
+    public IndexPage openIndexPage() {
         driver.get("http://parabank.parasoft.com");
+        return this;
     }
-
-    public void setLogin(String login) {
+    public IndexPage setLogin(String login) {
         userNameInput.sendKeys(login);
+        return this;
     }
-
-    public void setPassword(String password) {
+    public IndexPage setPassword(String password) {
         passwordInput.sendKeys(password);
+        return this;
+    }
+    public AccountPage clickLoginButton() {
+        loginButton.click();
+        return new AccountPage(driver);
     }
 
-    public void clickLoginButton() {
-        loginButton.click();
-    }
 }
