@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class IndexPage {
     private WebDriver driver;
@@ -10,15 +11,16 @@ public class IndexPage {
     @FindBy(css = "[name=username]")
     private WebElement userNameInput;
 
-    @FindBy(css = "[name=username]")
+    @FindBy(css = "[name=password]")
     private WebElement passwordInput;
 
-    @FindBy(css = "[name=username]")
+    @FindBy(css = "[value='Log In']")
     private WebElement loginButton;
 
 
     public IndexPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void openIndexPage() {
