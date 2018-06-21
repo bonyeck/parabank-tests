@@ -15,9 +15,8 @@ public class LoginTest extends BaseTest{
         indexPage.openIndexPage()
                 .setLogin("John")
                 .setPassword("123123!$L")
-                .clickLoginButton();
-
-        Assert.assertTrue(accountPage.isUserLoggedIn());
+                .clickLoginButton()
+                .loginAssertion.isUserLoggedIn();
 
     }
 }
