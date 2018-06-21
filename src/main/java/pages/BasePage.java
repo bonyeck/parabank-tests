@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import scenarios.LoginScenario;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -44,4 +45,9 @@ public abstract class BasePage {
 
         return wait.until(jQueryLoad) && wait.until(jsLoad);
     }
+
+    public <I extends BasePage, O extends BasePage> O run(scenarios.Scenario<I, O> scenario) {
+        return scenario.run((I) this);
+    }
+
 }

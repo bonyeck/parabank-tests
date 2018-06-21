@@ -6,10 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import pages.BasePage;
 
+import java.util.List;
+
 public class LoginAssertions extends BasePage {
 
     @FindBy(css="[href*='logout.htm']")
-    private WebElement logoutLink;
+    private List<WebElement> logoutLink;
 
 
     public LoginAssertions(WebDriver driver){
@@ -17,7 +19,11 @@ public class LoginAssertions extends BasePage {
     }
 
     public void isUserLoggedIn(){
-        Assert.assertTrue(logoutLink.isDisplayed());
+        Assert.assertTrue(logoutLink.size()!=0);
+    }
+
+    public void isUserLoggedOut() {
+        Assert.assertTrue(logoutLink.size()==0);
     }
 }
 

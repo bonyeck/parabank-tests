@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.IndexPage;
+import scenarios.LoginScenario;
 
 public class LoginTest extends BaseTest{
 
@@ -17,7 +18,14 @@ public class LoginTest extends BaseTest{
                 .setPassword("123123!$L")
                 .clickLoginButton()
                 .loginAssertion.isUserLoggedIn();
+    }
 
+    @Test
+    public void shouldLogout(){
+        indexPage.openIndexPage()
+                .run(new LoginScenario("John", "123123!$L"))
+                .clickLogout()
+                .loginAssertion.isUserLoggedOut();
     }
 }
 

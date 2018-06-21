@@ -3,10 +3,15 @@ package pages;
 import assertions.LoginAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class AccountPage extends BasePage {
 
     public LoginAssertions loginAssertion;
+
+    @FindBy(css = "[href$='logout.htm']")
+    private WebElement logoutLink;
 
     public AccountPage(WebDriver driver) {
         super(driver);
@@ -15,10 +20,11 @@ public class AccountPage extends BasePage {
 
     public boolean isUserLoggedIn() {
         waitForJStoLoad();
-        return driver.findElement(By.cssSelector("[href$='logout.htm']")).isDisplayed();
+        return logoutLink.isDisplayed();
     }
 
-    public void logout() {
-        driver.findElement(By.cssSelector("[href$='logout.htm']")).click();
+    public IndexPage clickLogout() {
+        logoutLink.click();
+        return new IndexPage(driver);
     }
 }
