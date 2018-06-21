@@ -3,14 +3,15 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AccountPage extends BasePage {
+public class AccountPage  {
+
+    private WebDriver driver;
 
     public AccountPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
 
     public boolean isUserLoggedIn() {
-        waitForJStoLoad();
         return driver.findElement(By.cssSelector("[href$='logout.htm']")).isDisplayed();
     }
 
