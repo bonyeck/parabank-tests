@@ -8,18 +8,7 @@ import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.IndexPage;
 
-public class LoginTest {
-
-    WebDriver driver;
-    IndexPage indexPage;
-    AccountPage accountPage;
-
-    @BeforeTest
-    public void before() {
-        driver = new ChromeDriver();
-        indexPage = new IndexPage(driver);
-        accountPage = new AccountPage(driver);
-    }
+public class LoginTest extends BaseTest{
 
     @Test
     public void shouldLogin() {
